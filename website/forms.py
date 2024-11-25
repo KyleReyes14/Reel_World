@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Film
 
 
 class SignUpForm(UserCreationForm):
@@ -31,3 +32,41 @@ class SignUpForm(UserCreationForm):
 		self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
 		self.fields['password2'].label = ''
 		self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'	
+	
+
+
+class AddRecordForm(forms.ModelForm):
+    class Meta:
+        model = Film
+        exclude = ("user",)
+
+    title = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Title", "class":"form-control"}), label="")
+    release_year = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Year Released", "class":"form-control"}), label="")
+    director = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Director", "class":"form-control"}), label="")
+    genre = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Genre", "class":"form-control"}), label="")
+    language = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Language", "class":"form-control"}), label="")
+    duration_mins = forms.IntegerField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Duration", "class":"form-control"}), label="")
+    production_company = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Production Company", "class":"form-control"}), label="")
+    sypnosis = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Sypnosis", "class":"form-control"}), label="")
+
+class STATUS(forms.Form):
+	status_choices = ( 
+    ("TO WATCH", "TO WATCH"), 
+    ("WATCHING", "WATCHING"), 
+    ("WATCHED", "WATCHED"), 
+    ("REWATCHED", "REWATCHED"), 
+)	
+status = forms.CharField()
+category = forms.ChoiceField(choices=STATUS)
+
+class RATING(forms.Form):
+	rating_choices =(
+          ("1", "1"),
+          ("2", "2"),
+          ("3", "3"),
+          ("4", "4"),
+          ("5", "5"),
+    )
+rating: forms.CharField()
+category= forms.ChoiceField(choices=RATING)
+	

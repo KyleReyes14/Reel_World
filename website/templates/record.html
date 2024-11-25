@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br/> 
+<div class="card" style="width: 70rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ film_record }}</h5>
+      <p class="card-text">{{ film_record.sypnosis}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"> <strong>Title: </strong> {{ film_record.title }}</li>
+      <li class="list-group-item"> <strong>Year: </strong> {{ film_record.release_year}} </li>
+      <li class="list-group-item"> <strong>Director: </strong>{{ film_record.director}} </li>
+      <li class="list-group-item"> <strong>Genre: </strong>{{ film_record.genre}} </li>
+      <li class="list-group-item"> <strong>Language: </strong> {{ film_record.language}}  </li>
+      <li class="list-group-item"> <strong>Duration: </strong>{{ film_record.duration_mins }} <i>minutes </i> </li>
+      <li class="list-group-item"> <strong>Production Company: </strong>{{ film_record.production_company}}  </li>
+      <li class="list-group-item"> <strong>Status: </strong>{{ film_record.status }}  </li>
+      <li class="list-group-item"> <strong>Rating: </strong>{{ film_record.rating }} <i>out of 5 </i> </li>
+      <li class="list-group-item"> <strong>Created at: </strong>{{ film_record.created_at }} </li>
+      <li class="list-group-item"> <strong>ID: </strong>{{ film_record.id }} </li>
+        
+    </ul>
+
+    </div>
+  </div>
+        
+  <br/>
+
+  <div class="col-md-6 offset-md-5">
+    <class="card-body">
+<a href="{% url 'home' %}" class="btn btn-warning"> Back</a> </ul>
+
+<a href="{% url 'update_record' film_record.id %}" class="btn btn-success"> Update Film</a> </ul>
+<a href="{% url 'delete_record' film_record.id %}" class="btn btn-danger"> Delete</a> </ul> 
+  </div>
+
+<br/>
+
+
+
+
+{% endblock %}
