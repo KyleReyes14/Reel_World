@@ -1,4 +1,6 @@
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -63,15 +65,15 @@ WSGI_APPLICATION = 'proj.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ReelWorld',
-        'USER': 'root',
-        'PASSWORD': 'password831l0ls',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
+       'default': {
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'ReelWorld',
+       'USER': 'root',
+       'PASSWORD': 'password831l0ls',
+       'HOST': 'localhost',
+       'PORT': '3306',
+   }
+  }
 
 
 # Password validation
